@@ -1,1 +1,94 @@
-{}
+{
+	"root": true,
+	"env": { "es6": true },
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"project": "tsconfig.json",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"@typescript-eslint",
+		// "angular",
+		"rxjs-angular",
+		"promise",
+		"import",
+		"unicorn",
+		"sort-imports-es6-autofix",
+		"sort-class-members",
+		"typescript-sort-keys",
+		"security",
+		"json",
+		"prettier"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:eslint-comments/recommended",
+		"plugin:@typescript-eslint/recommended",
+		// "plugin:angular/johnpapa",
+		"plugin:promise/recommended",
+		"plugin:import/recommended",
+		"plugin:import/typescript",
+		"plugin:unicorn/recommended",
+		"plugin:security/recommended",
+		"plugin:json/recommended",
+		"prettier"
+	],
+	"rules": {
+		// Angular Rules
+		// "angular/no-use-before-define": 0,
+
+		// RxJS + Angular Rules
+		"rxjs-angular/prefer-async-pipe": "error",
+		"rxjs-angular/prefer-composition": "error",
+		"rxjs-angular/prefer-takeuntil": "error",
+
+		// Sort Imports Rules
+		"sort-imports-es6-autofix/sort-imports-es6": [
+			1,
+			{
+				"ignoreCase": false,
+				"ignoreMemberSort": false,
+				"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+			}
+		],
+
+		// Sort Class Members Rules
+		"sort-class-members/sort-class-members": [
+			2,
+			{
+				"order": [
+					"[static-properties]",
+					"[static-methods]",
+					"[properties]",
+					"[conventional-private-properties]",
+					"constructor",
+					"[methods]",
+					"[conventional-private-methods]"
+				],
+				"accessorPairPositioning": "getThenSet"
+			}
+		],
+
+		// Typescript Sort Keys Fix Rules
+		"typescript-sort-keys/interface": "error",
+		"typescript-sort-keys/string-enum": "error",
+
+		// Unicorn Rules
+		"unicorn/prefer-module": 0
+	},
+	"settings": {
+		"import/extensions": [".js", ".ts"],
+		"import/ignore": ["node_modules", "dist"],
+		"import/parsers": { "@typescript-eslint/parser": [".ts"] },
+		"import/resolver": {
+			"webpack": { "config": "webpack.config.js" }
+		}
+	},
+	"ignorePatterns": [
+		"webpack.config.js",
+		".eslintrc",
+		".eslintignore",
+		".gitignore"
+	]
+}

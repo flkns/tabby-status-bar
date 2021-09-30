@@ -1,0 +1,16 @@
+h3.mb-3 StatusBar
+
+
+.d-flex
+    h5.mb-1 Plugins
+
+.list-group.list-group-flush.mb-3
+    .list-group-item.d-flex.align-items-center(*ngFor='let plugin of availablePlugins')
+        toggle(
+            [ngModel]='isEnabled(plugin)',
+            (ngModelChange)='togglePlugin(plugin)'
+        )
+
+        .mr-auto.d-flex.flex-column
+            div
+                strong {{ plugin }}
